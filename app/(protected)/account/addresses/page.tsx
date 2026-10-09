@@ -1,2 +1,0 @@
-import { EmptyState } from "@/components/feedback/EmptyState";
-export default function AddressesPage() { return <main className="mx-auto min-h-screen max-w-3xl px-6 py-14"><h1 className="text-4xl font-bold">Addresses</h1><div className="mt-8"><EmptyState title="Address management is unavailable">The existing address schema does not expose a verified user-to-address relationship.</EmptyState></div></main>; }
