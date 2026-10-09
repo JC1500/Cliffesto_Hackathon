@@ -7,7 +7,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { popularSearches } from "@/lib/popular-searches";
 import { useRecentSearches } from "@/hooks/useRecentSearches";
 import type { CatalogProduct } from "@/lib/catalog";
-import { ShoppingCart, UserRound } from "lucide-react";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export function Header() {
   const pathname = usePathname();
@@ -161,7 +161,7 @@ export function Header() {
   <button
     type="submit"
     aria-label="Submit search"
-    className="shrink-0 rounded-lg bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700 active:bg-indigo-800"
+    className="shrink-0 min-h-11 rounded-lg bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700 active:bg-indigo-800"
   >
     Search
   </button>
@@ -182,6 +182,7 @@ export function Header() {
         </div>}
       </div>
       <nav className="ml-auto flex items-center gap-3 text-sm font-medium" aria-label="Main navigation">
+<ThemeToggle />
 
 <Link
   href="/account"
@@ -195,11 +196,10 @@ export function Header() {
              focus-visible:outline-none focus-visible:ring-2
              focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
 >
-  <UserRound
-    size={21}
-    strokeWidth={1.8}
-    className="transition-transform duration-200 group-hover:scale-110"
-  />
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-[21px] w-[21px] transition-transform duration-200 group-hover:scale-110">
+    <path d="M20 21a8 8 0 0 0-16 0" />
+    <circle cx="12" cy="8" r="4" />
+  </svg>
 </Link>
 <Link
   href="/cart"
@@ -213,11 +213,11 @@ export function Header() {
              focus-visible:outline-none focus-visible:ring-2
              focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
 >
-  <ShoppingCart
-    size={21}
-    strokeWidth={1.8}
-    className="transition-transform duration-200 group-hover:scale-110"
-  />
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-[21px] w-[21px] transition-transform duration-200 group-hover:scale-110">
+    <path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 2-1.6L22 8H6" />
+    <circle cx="10" cy="21" r="1" />
+    <circle cx="19" cy="21" r="1" />
+  </svg>
 </Link>
       </nav>
     </div>

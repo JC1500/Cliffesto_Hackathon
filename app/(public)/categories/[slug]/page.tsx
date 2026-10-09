@@ -1,4 +1,18 @@
 import { notFound } from "next/navigation";
-import { products } from "@/lib/products";
-import { ProductGrid } from "@/components/products/ProductGrid";
-export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) { const slug = (await params).slug.toLowerCase(); const matches = products.filter((p) => p.category.toLowerCase() === slug); if (!matches.length) notFound(); return <main className="mx-auto min-h-screen max-w-7xl px-6 py-14"><p className="font-semibold uppercase tracking-wide text-indigo-600">Category</p><h1 className="mt-3 text-4xl font-bold capitalize">{slug}</h1><div className="mt-10"><ProductGrid products={matches} /></div></main>; }
+import { ProductBrowser } from "@/features/products/ProductBrowser";
+import { searchCatalog } from "@/lib/catalog";
+
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const slug = decodeURIComponent((await params).slug).toLowerCase();
+  const catalog = await searchCatalog({ query: "", page: 1, limit: 1 });
+  const category = catalog.categories.find((item) =>
+    item.slug.toLowerCase() === slug || item.name.toLowerCase().replace(/\s+/g, "-") === slug
+  );
+  if (!category) notFound();
+
+  return (
+    <main className="mx-auto min-h-screen max-w-[1440px] px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
+      <ProductBrowser initialCategorySlug={category.slug} categoryTitle={category.name} />
+    </main>
+  );
+}
