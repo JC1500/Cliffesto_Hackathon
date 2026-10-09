@@ -2,8 +2,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+<<<<<<< HEAD
 import { formatPrice } from "@/lib/products";
 import { getCatalogProduct, getRelatedCatalogProducts } from "@/lib/catalog";
+=======
+
+import {
+  getProduct,
+  formatPrice,
+  products,
+} from "@/lib/products";
+>>>>>>> 084e3bd795eec06c23a6b5ad61d131582be79c94
 import { ProductActions } from "@/features/products/ProductActions";
 import { ProductGrid } from "@/components/products/ProductGrid";
 
