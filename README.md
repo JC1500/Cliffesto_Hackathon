@@ -20,7 +20,7 @@ docker compose up --build
 
 Stop containers without deleting the persistent database volume with `docker compose stop`.
 
-Public storefront routes work from the separated demo catalog in [lib/products.ts](./lib/products.ts). Authentication, cart, order, and payment operations use PostgreSQL when configured. Payments intentionally return a clear not-configured response rather than claiming a charge.
+The catalog is seeded with 30 products across seven categories in [db/seed.sql](./db/seed.sql). Product listing and ranked search use PostgreSQL when `DATABASE_URL` is configured, with the demo catalog in [lib/products.ts](./lib/products.ts) as a public-page fallback. Search accepts `q`, `page`, `limit`, and `category` through `/api/products` or `/api/products/search`; recent searches are kept locally in the browser. Authentication, cart, order, and payment operations use PostgreSQL when configured. Payments intentionally return a clear not-configured response rather than claiming a charge.
 
 ## Checks
 
